@@ -60,7 +60,7 @@ Your program should be able to mirror the following sets of words (at minimum):
 You may expand this list if you wish.
 
 ## Interface
-`Conversation.java` must implement the `Chatbot.java` interface. For this assignment, we've given you skeleton code that "implements" each method in the interface (currently each method does nothing) and provides Javadoc comments for each method. Your job is to modify the body of each method to complete its task. The purpose of this skeleton code is to help you think about solving this assignment in an object-oriented way. Pay attention to the call signatures and Javadoc comment for each method; they tell you the return and parameters, and give a brief description of the method's task.
+`Conversation.java` must implement the `Chatbot.java` interface. For this assignment, we've given you skeleton code that "implements" each method in the interface (currently each method does nothing) and provides Javadoc comments for each method. Your job is to modify the body of each method to complete its task-- this includes the `Conversation` constructor, which should not expect any parameters. The purpose of this skeleton code is to help you think about solving this assignment in an object-oriented way. Pay attention to the call signatures and Javadoc comment for each method; they tell you the return and parameters, and give a brief description of the method's task.
 
 ## Hints
 Start early on this assignment to give yourself plenty of time to plan and implement your program. Although you may have written a similar program before, many things are different with Java.
