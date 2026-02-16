@@ -1,6 +1,7 @@
 // You should **not** update any call signatures in this file
 // only modify the body of each function
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
@@ -9,13 +10,14 @@ class Conversation implements ConversationRequirements {
 
   // Attributes 
   private Scanner input;
-  private ArrayList<String> transcript;
+  private String[] transcript;
+  private int transcriptIndex;
   /**
    * Constructor 
    */
   Conversation() {
     input = new Scanner(System.in);
-    transcript = new ArrayList<String>();
+    transcriptIndex = 0;
   }
 
   /**
@@ -26,21 +28,23 @@ class Conversation implements ConversationRequirements {
       int rounds = input.nextInt();
       input.nextLine();
 
-      String greeting = "Hi there! What's going on?";
+      transcript = new String[2*rounds + 2];
+
+      String greeting = "Hi there! What's up?";
       System.out.println("\n" + greeting);
-      transcript.add(greeting);
+      transcript[transcriptIndex++] = greeting;
 
       for (int i = 0; i < rounds; i++) {
         String userInput = input.nextLine();
-        transcript.add(userInput);
+        transcript[transcriptIndex++] = userInput;
 
         String response = respond(userInput);
         System.out.println(response);
-        transcript.add(response);
+        transcript[transcriptIndex++] = response;
       }
     String goodbye = "Bye!";
     System.out.println(goodbye);
-    transcript.add(goodbye);
+    transcript[transcriptIndex++] = goodbye;
 
   }
 
@@ -48,7 +52,10 @@ class Conversation implements ConversationRequirements {
    * Prints transcript of conversation
    */
   public void printTranscript() {
-
+    System.out.println("\nTRANSCRIPT");
+    for (int i = 0; i < transcriptIndex; i++) {
+      System.out.println(transcript[i]);
+    }
   }
 
   /**
@@ -63,6 +70,7 @@ class Conversation implements ConversationRequirements {
       if (words[i].equals("I")) {
         words[i] = "you";
         mirrored = true;
+
       }
       else if (words[i].equalsIgnoreCase("my")) {
         words[i] = "your";
@@ -91,7 +99,8 @@ class Conversation implements ConversationRequirements {
     String[] canned = {
       "Interesting!",
       "Mmm-hmm.",
-      "Huh?"
+      "Huh?",
+      "Ok."
     };
     Random rand = new Random();
     return canned[rand.nextInt(canned.length)];
