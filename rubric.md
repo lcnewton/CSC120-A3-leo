@@ -24,9 +24,9 @@ __**YES**__ 1 pt: Allocates static array of canned responses
 
 __**YES**__ 1 pt: Uses a canned response when no mirror words detected
 
-_____ 1 pt: Detects the requested set of mirror words (at minimum)
+__**YES**__ 1 pt: Detects the requested set of mirror words (at minimum)
 
-____ 1 pt: Replaces simple mirror words appropriately (unpunctuated, lowercase)
+__**YES**__ 1 pt: Replaces simple mirror words appropriately (unpunctuated, lowercase)
 
 ### Level 3 (3 pts)
 
@@ -54,16 +54,16 @@ __**YES**__ 2 pts: Executes fully & consistently without crashing (exception/fre
 
 _____ 2 pt: Complies with style guidelines (missing items 1 pt each):
 
-      _____ Classes & class members all have Javadoc header comments
+      __**PART**__ Classes & class members all have Javadoc header comments
 
-      _____ Clear and consistent indentation of bracketed sections
+      __**YES**__ Clear and consistent indentation of bracketed sections
 
-      _____ Adheres to Java conventions on naming & capitalization
+      __**YES**__ Adheres to Java conventions on naming & capitalization
 
-      _____ Methods & variables all have clear and accurate names
+      __**YES**__ Methods & variables all have clear and accurate names
 
-      _____ Methods avoid confusing side effects
+      __**YES**__ Methods avoid confusing side effects
 
 _____ 1 pt: All required files included with submission (including completed checklist file)
 
-_____ 1 pt: `reflection.md` contains your reflection on the assignment
+__**YES**__ 1 pt: `reflection.md` contains your reflection on the assignment

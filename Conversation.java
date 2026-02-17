@@ -10,14 +10,19 @@ class Conversation implements ConversationRequirements {
 
   // Attributes 
   private Scanner input;
-  private String[] transcript;
-  private int transcriptIndex;
+  private ArrayList<String> transcript;
+  private static String[] canned = {
+      "Interesting!",
+      "Mmm-hmm.",
+      "Huh?",
+      "Ok."
+    };
   /**
    * Constructor 
    */
   Conversation() {
     input = new Scanner(System.in);
-    transcriptIndex = 0;
+    transcript = new ArrayList<String>();
   }
 
   /**
@@ -28,23 +33,25 @@ class Conversation implements ConversationRequirements {
       int rounds = input.nextInt();
       input.nextLine();
 
-      transcript = new String[2*rounds + 2];
-
+      // Greeting begins the chat
       String greeting = "Hi there! What's up?";
       System.out.println("\n" + greeting);
-      transcript[transcriptIndex++] = greeting;
+      transcript.add(greeting);
 
+      // After the user defines the rounds, the bot responds for that
+      // number of times 
       for (int i = 0; i < rounds; i++) {
         String userInput = input.nextLine();
-        transcript[transcriptIndex++] = userInput;
+        transcript.add(userInput);
 
         String response = respond(userInput);
         System.out.println(response);
-        transcript[transcriptIndex++] = response;
+        transcript.add(response);
       }
+    // Goodbye ends the chat, followed by transcript
     String goodbye = "Bye!";
     System.out.println(goodbye);
-    transcript[transcriptIndex++] = goodbye;
+    transcript.add(goodbye);
 
   }
 
@@ -53,8 +60,8 @@ class Conversation implements ConversationRequirements {
    */
   public void printTranscript() {
     System.out.println("\nTRANSCRIPT");
-    for (int i = 0; i < transcriptIndex; i++) {
-      System.out.println(transcript[i]);
+    for (int i = 0; i < transcript.size(); i++) {
+      System.out.println(transcript.get(i));
     }
   }
 
@@ -65,6 +72,9 @@ class Conversation implements ConversationRequirements {
    */
   public String respond(String inputString) {
     String[] words = inputString.split(" ");
+    // Boolean "mirrored" variable so that program can add a question mark
+    // onto mirrored responses
+    
     boolean mirrored = false;
     for (int i = 0; i < words.length; i++) {
       if (words[i].equals("I")) {
@@ -95,12 +105,6 @@ class Conversation implements ConversationRequirements {
     }
     if (mirrored) {
       return String.join(" ", words) + "?";
-    }
-    String[] canned = {
-      "Interesting!",
-      "Mmm-hmm.",
-      "Huh?",
-      "Ok."
     };
     Random rand = new Random();
     return canned[rand.nextInt(canned.length)];
